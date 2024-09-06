@@ -1,0 +1,19 @@
+<div class="cont-edit">
+  <h2>Editar Noticia</h2>
+  <form class="flex  border-1 border-black" [formGroup]="newsForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <mat-form-field appearance="fill">
+      <mat-label>Título</mat-label>
+      <input matInput id="titulo" formControlName="titulo">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput id="descripcion" formControlName="descripcion"></textarea>
+    </mat-form-field>
+    <div class="file-input">
+      <label for="imagen">Imagen:</label>
+      <input id="imagen" type="file" (change)="onFileChange($event)">
+    </div>
+    <button mat-raised-button color="primary" type="submit">Actualizar Noticia</button>
+  </form>
+
+</div>

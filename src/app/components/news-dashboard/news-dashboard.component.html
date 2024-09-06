@@ -1,0 +1,5 @@
+<div class="news-dashboard bg-[#fafafa] ">
+    <button *ngIf="isLoggedIn() && isAdmin " mat-raised-button color="primary" (click)="openDialog()">Crear Noticia</button>
+    <app-news-list [newsList]="newsList"></app-news-list>
+  </div>
+  

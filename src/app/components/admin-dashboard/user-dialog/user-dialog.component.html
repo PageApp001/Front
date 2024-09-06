@@ -1,0 +1,66 @@
+<h2 class="text-center" mat-dialog-title>{{ data.editMode ? 'Editar Usuario' : 'Crear Usuario' }}</h2>
+<div mat-dialog-content>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="data.user.nombre" name="nombre" required>
+      <mat-error *ngIf="userForm.controls['nombre'].invalid && userForm.controls['nombre'].touched">
+        El nombre es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Apellido</mat-label>
+      <input matInput [(ngModel)]="data.user.apellido" name="apellido" required>
+      <mat-error *ngIf="userForm.controls['apellido'].invalid && userForm.controls['apellido'].touched">
+        El apellido es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Cargo</mat-label>
+      <input matInput [(ngModel)]="data.user.cargo" name="cargo" required>
+      <mat-error *ngIf="userForm.controls['cargo'].invalid && userForm.controls['cargo'].touched">
+        El cargo es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Dependencia</mat-label>
+      <input matInput [(ngModel)]="data.user.dependencia" name="dependencia" required>
+      <mat-error *ngIf="userForm.controls['dependencia'].invalid && userForm.controls['dependencia'].touched">
+        La dependencia es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="data.user.email" name="email" required email>
+      <mat-error *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched">
+        El email es requerido y debe ser válido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="!data.editMode">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" [(ngModel)]="data.user.password" name="password" required>
+      <mat-error *ngIf="userForm.controls['password'].invalid && userForm.controls['password'].touched">
+        La contraseña es requerida
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Rol</mat-label>
+      <input matInput [(ngModel)]="data.user.role" name="role" >
+      <mat-error *ngIf="userForm.controls['role'].invalid && userForm.controls['role'].touched">
+        El rol es requerido
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data.user" [disabled]="userForm.invalid"> {{ data.editMode ? 'Actualizar' : 'Crear' }} </button>
+</div>

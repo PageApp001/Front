@@ -1,0 +1,26 @@
+.carousel-image {
+  position: relative; /* Posición relativa para poder posicionar los pseudo-elementos */
+  
+}
+
+.carousel-container {
+  width: 100%;
+  
+  margin: auto;
+}
+
+.edit-carousel {
+  margin-top: 20px;
+}
+
+.carousel-thumbnail {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.edit-carousel div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}

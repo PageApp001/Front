@@ -1,0 +1,29 @@
+<div class="news-list p-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div *ngFor="let news of newsList"
+    class="bg-white rounded-lg border border-gray-200 shadow-md hover:shadow-lg transition-shadow ">
+
+    <!-- Contenido del encabezado -->
+    <div class="flex items-center p-4 border-b border-gray-200">
+      <div class="ml-4">
+        <h3 class="text-lg font-semibold">{{ news.titulo }}</h3>
+        <p class="text-gray-500 text-sm">{{ news.fechaPublicacion | date:'medium' }}</p>
+      </div>
+    </div>
+
+    <!-- Imagen de la noticia -->
+    <img class="w-full h-48 object-cover rounded-t-lg" *ngIf="news.imagen" [src]="getImageUrl(news.imagen)"
+      alt="{{ news.titulo }}">
+
+    <!-- Descripción de la noticia -->
+    <div class="p-4">
+      <a [routerLink]="['/news', news.id]" class="text-base cursor-pointer text-blue-500">Ver más...</a>
+    </div>
+    <!-- Botones de acción -->
+    <div *ngIf="isLoggedIn() && isAdmin" class="p-4 flex gap-2 border-t border-gray-200">
+      <button mat-raised-button color="primary" class="  text-white py-1 px-3 rounded "
+        (click)="editNews(news)">Editar</button>
+      <button mat-raised-button color="warn" class="  text-white py-1 px-3 rounded "
+        (click)="deleteNews(news.id)">Eliminar</button>
+    </div>
+  </div>
+</div>

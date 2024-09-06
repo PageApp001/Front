@@ -1,0 +1,22 @@
+<div class="flex flex-col items-center p-4 ">
+  <div class="tittle flex w-[100%] justify-center">
+    <h2 class="text-center border-b-2 border-gray w-[60%] " mat-dialog-title>{{isEditMode ? 'Editar Noticia' : 'Crear Noticia'}}</h2>
+  </div>
+  <form class="flex flex-col gap-4 items-center justify-center" [formGroup]="newsForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <mat-form-field appearance="fill">
+      <mat-label>Título</mat-label>
+      <input matInput id="titulo" formControlName="titulo" required >
+    </mat-form-field>
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput id="descripcion" formControlName="descripcion" required ></textarea>
+    </mat-form-field>
+    <div class="file-input">
+      <label for="imagen">Imagen:</label>
+      <input id="imagen" type="file" (change)="onFileChange($event)">
+    </div>
+    <div class="button">
+      <button mat-raised-button color="primary" type="submit">{{isEditMode ? 'Actualizar Noticia' : 'Crear Noticia'}}</button>
+    </div>
+  </form>
+</div>

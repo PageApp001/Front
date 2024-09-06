@@ -1,0 +1,16 @@
+.edit-carousel {
+    margin-top: 20px;
+  }
+  
+  .carousel-thumbnail {
+    width: 200px;
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .edit-carousel div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  

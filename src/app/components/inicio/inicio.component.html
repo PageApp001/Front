@@ -1,0 +1,30 @@
+<div class="w-full h-[70%] bg-[#fafafa] flex justify-center items-center ">
+
+  <div class="subCont w-full sm:w-[70%] md:w-[50%] lg:w-[30%]  p-8 flex flex-col justify-center bg-white rounded-lg border border-gray-200 shadow-md hover:shadow-lg transition-shadow  m-4">
+    <h2 class="text-center text-lg">Login</h2>
+
+    <form class="m-4 flex flex-col items-center gap-2" (submit)="login()">
+
+      <div class="flex flex-col gap-2 w-full">
+        <label class="text-base" for="email">Correo</label>
+        <input class="border-gray border-2 rounded-md p-1 w-full" type="email" id="email" [(ngModel)]="email" name="email">
+      </div>
+
+      <div class="flex flex-col gap-2 w-full">
+        <label class="text-base" for="password">Contraseña</label>
+        <input class="border-gray border-2 rounded-md p-1 w-full" type="password" id="password" [(ngModel)]="password" name="password">
+      </div>
+
+      <button mat-raised-button color="primary" class="mt-4 border-2 border-black w-36" type="submit">Ingresar</button>
+
+      <div *ngIf="errorMessage" class="text-red-500 mt-2">{{ errorMessage }}</div>
+
+      <div class="Btn-registro flex justify-center mt-6 border-t-2 border-gray pt-4">
+        <button mat-raised-button color="primary" class="border-2 border-black w-36" type="button" (click)="navigateToRegister()">Crear cuenta</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

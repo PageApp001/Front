@@ -1,0 +1,14 @@
+.news-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .file-input {
+    margin-top: 1rem;
+  }
+  
+  button {
+    align-self: flex-start;
+  }
+  

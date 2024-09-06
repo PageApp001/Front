@@ -1,0 +1,32 @@
+<div id="contMain" class="contMain flex p-1 justify-between bg-[#fafafa] border-1 border-gray shadow-md rounded-b">
+
+  <div class="logo flex mx-2 p-2">
+    <button (click)="navigateHome()" type="button">
+      <img class="w-[100px] h-[80px]" src="../../../assets/images/logo color.png" alt="">
+    </button>
+  </div>
+
+  <div class="nav w-[50%] mb-4 flex items-end justify-end mx-4">
+    <div class="nav-list flex justify-evenly gap-8">
+      
+        <button class="p-2 rounded-lg text-base font-semibold text-[#3f48cc] cursor-pointer hover:bg-[#3f48cc] hover:text-white " *ngIf="isLoggedIn()" type="button ">
+          Eventos
+        </button>
+      
+      <div class="flex items-center">
+        <li class="text-base font-semibold" *ngIf="isLoggedIn()">{{ nombre }} {{ apellido }}</li>
+      </div>
+    </div>
+    <div class="ml-4">
+      <div class="btn-login-registro flex">
+        <button mat-raised-button color="primary" *ngIf="!isLoggedIn() && !isLoginRoute()"
+          (click)="navigateLogin()">Ingresar</button>
+      </div>
+      <div class="btnBack">
+        <button mat-raised-button color="primary" *ngIf="isLoggedIn() && !isHomeRoute()" (click)="back()"
+          type="button">Volver</button>
+      </div>
+    </div>
+
+  </div>
+</div>

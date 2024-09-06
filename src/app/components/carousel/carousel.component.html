@@ -1,0 +1,21 @@
+<div class="w-full flex flex-col gap-2 bg-[#fafafa] " fxLayout="column" fxLayoutAlign="center center">
+  <div class="carousel-container">
+    <carousel [interval]="4000">
+      <slide *ngFor="let image of carousel">
+
+        <ng-container *ngIf="image.link; else noLink">
+          <a [href]="image.link" target="_blank">
+              <img [src]="getImageUrl(image.imagen)" class="carousel-image d-block w-100 h-96" alt="Slide">
+          </a>
+      </ng-container>
+      <ng-template #noLink>
+          <img [src]="getImageUrl(image.imagen)" class="carousel-image d-block w-100 h-96">
+      </ng-template>
+      </slide>
+
+    </carousel>
+  </div>
+  <button *ngIf="isLoggedIn() && isAdmin " type="button">
+    <a routerLink="/edit-carousel" mat-raised-button color="primary">Editar Carrusel</a>
+  </button>
+</div>
