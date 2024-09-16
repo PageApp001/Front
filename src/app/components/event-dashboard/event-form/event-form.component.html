@@ -1,0 +1,19 @@
+<div class="form-event flex p-4 justify-center ">
+    <form class="flex flex-col my-4 w-[80%] gap-2" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+        <label class="text-base" for="nombre">Nombre del evento:</label>
+        <input class="border-gray border-2 rounded-md w-[40%] p-1 " id="nombre" formControlName="nombre" type="text" />
+
+        <label class="text-base" for="descripcion">Descripción del evento:</label>
+        <textarea class="border-gray border-2 rounded-md h-[100px] p-1 " id="descripcion" formControlName="descripcion"></textarea>
+
+        <label class="text-base" for="fechaInicio">Fecha de inicio:</label>
+        <input class="border-gray border-2 rounded-md w-[40%] p-1 " id="fechaInicio" formControlName="fechaInicio" type="date" />
+
+        <label class="text-base" for="horaInicio">Hora de inicio:</label>
+        <input class="border-gray border-2 rounded-md w-[40%] p-1 " id="horaInicio" formControlName="horaInicio" type="time" />
+
+        <div class="button text-center">
+            <button mat-raised-button color="primary" type="submit">Crear Evento</button>
+        </div>
+    </form>
+</div>

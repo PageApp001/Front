@@ -1,0 +1,21 @@
+<div *ngIf="events.length > 0; else noEvents">
+    <h2>Lista de Eventos</h2>
+    <ul class="flex gap-4 ">
+        <li class="flex flex-col justify-between gap-2 p-4 w-[25%] bg-white rounded-lg border border-gray-200 shadow-md hover:shadow-lg transition-shadow "
+            *ngFor="let event of events">
+            <h2 class="border-b-2">{{ event.nombre }}</h2>
+            <div class="descripcion border p-1 h-[150px] text-justify whitespace-normal break-words">
+                {{ event.descripcion }}
+            </div>
+            
+            <p><strong>Fecha de Inicio:</strong> {{ event.fechaInicio | date }} <strong> Hora:</strong> {{
+                event.horaInicio }}</p>
+            <p><strong>Fecha de Publicación:</strong> {{ event.fechaPublicacion | date : 'medium' }}</p>
+        </li>
+    </ul>
+</div>
+
+<ng-template #noEvents>
+    <p>No hay eventos disponibles.</p>
+</ng-template>
+

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { enviroment } from "src/app/enviroments/enviroment";
+import { environment } from "src/app/enviroments/enviroment";
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +12,7 @@ export class LinkService {
     private apiUrl: string;
     
     constructor(private http: HttpClient) { 
-        this.endpoint = enviroment.endpoint
+        this.endpoint = environment.endpoint
         this.apiUrl = 'link';
     }
 

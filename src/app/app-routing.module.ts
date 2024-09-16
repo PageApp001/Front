@@ -10,45 +10,70 @@ import { NewsFormComponent } from './components/news-dashboard/news-form/news-fo
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { CarouselEditComponent } from './components/carousel/carousel-edit/carousel-edit.component';
 import { NewsDetailsComponent } from './components/news-dashboard/news-details/news-details.component';
-
+import { EventDashboardComponent } from './components/event-dashboard/event-dashboard.component';
 
 const routes: Routes = [
-
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
-    path: '', component: HomeComponent
+    path: '',
+    component: HomeComponent,
   },
 
   {
-    path: 'home', component: HomeComponent
+    path: 'home',
+    component: HomeComponent,
   },
 
   {
     path: 'login',
-    component: InicioComponent
+    component: InicioComponent,
   },
   {
     path: 'signin',
-    component: RegistroComponent
+    component: RegistroComponent,
   },
   {
-    path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AdminGuard]
+    path: 'admin-dashboard',
+    component: AdminDashboardComponent,
+    canActivate: [AdminGuard],
   },
-  { path: 'list-news', component: NewsListComponent },
-  { path: 'news/:id', component: NewsDetailsComponent },
-  { path: 'create-news', component: NewsFormComponent },
-  { path: 'edit-news/:id', component: NewsFormComponent },
+  {
+    path: 'list-news',
+    component: NewsListComponent,
+  },
+  {
+    path: 'news/:id',
+    component: NewsDetailsComponent,
+  },
+  {
+    path: 'create-news',
+    component: NewsFormComponent,
+  },
+  {
+    path: 'edit-news/:id',
+    component: NewsFormComponent,
+  },
+  {
+    path: 'carousel',
+    component: CarouselComponent,
+  },
+  {
+    path: 'edit-carousel',
+    component: CarouselEditComponent,
+  },
+  {
+    path: 'event-dashboard',
+    component: EventDashboardComponent,
+  },
 
-  { path: 'carousel', component: CarouselComponent },
-  { path: 'edit-carousel', component: CarouselEditComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

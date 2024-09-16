@@ -41,9 +41,9 @@ import { CarouselEditComponent } from './components/carousel/carousel-edit/carou
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AddLinkComponent } from './components/link/add-link/add-link.component';
 import { LinkComponent } from './components/link/link.component';
-
-
-
+import { EventDashboardComponent } from './components/event-dashboard/event-dashboard.component';
+import { EventFormComponent } from './components/event-dashboard/event-form/event-form.component';
+import { EventListComponent } from './components/event-dashboard/event-list/event-list.component';
 
 
 @NgModule({
@@ -67,6 +67,11 @@ import { LinkComponent } from './components/link/link.component';
     CarouselEditComponent,
     AddLinkComponent,
     LinkComponent,
+    EventDashboardComponent,
+    EventFormComponent,
+    EventListComponent,
+
+
 
   ],
   imports: [
