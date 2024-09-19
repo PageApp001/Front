@@ -12,7 +12,19 @@ export class HeaderComponent {
   apellido: string | null = '';
   email: string = '';
   password: string = '';
+
   showLoginButton: boolean = true;
+  showEventButton: boolean = true;
+
+  currentTime: string = '';
+  currentDate: string = '';
+
+  // Lista de rutas donde el botón de eventos debe ocultarse
+  hiddenEventButtonRoutes: string[] = [
+    '/event-dashboard',
+    '/login',
+    '/signin',
+  ];
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -21,6 +33,10 @@ export class HeaderComponent {
       if (event instanceof NavigationEnd) {
         // Oculta el botón de ingresar en la ruta de login
         this.showLoginButton = event.url !== '/login';
+        // Ocultar el botón de navegación a eventos en rutas especificadas
+        this.showEventButton = !this.hiddenEventButtonRoutes.includes(
+          event.url
+        );
       }
     });
 
@@ -33,14 +49,9 @@ export class HeaderComponent {
         this.apellido = null;
       }
     });
-  }
 
-  isLoginRoute(): boolean {
-    return this.router.url === '/login';
-  }
-
-  isHomeRoute(): boolean {
-    return this.router.url === '/home';
+    this.updateTimeAndDate();
+    setInterval(() => this.updateTimeAndDate(), 1000);
   }
 
   login() {
@@ -53,6 +64,52 @@ export class HeaderComponent {
         console.error('Error al iniciar sesión:', error);
       }
     );
+  }
+
+  // reloj -----------------
+  updateTimeAndDate(): void {
+    const date = new Date();
+
+    // Formato de tiempo
+    const hours = this.padZero(date.getHours());
+    const minutes = this.padZero(date.getMinutes());
+    const seconds = this.padZero(date.getSeconds());
+    this.currentTime = `${hours}:${minutes}:${seconds}`;
+
+    // Nombres de los meses
+    const monthNames = [
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Agosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Diciembre',
+    ];
+
+    // Formato de fecha
+    const day = this.padZero(date.getDate());
+    const month = monthNames[date.getMonth()]; // Obtener el nombre del mes
+    const year = date.getFullYear();
+    this.currentDate = `${day} de ${month} de ${year}`;
+  }
+
+  padZero(unit: number): string {
+    return unit < 10 ? `0${unit}` : `${unit}`;
+  }
+  // ----------------------
+
+  isLoginRoute(): boolean {
+    return this.router.url === '/login';
+  }
+
+  isHomeRoute(): boolean {
+    return this.router.url === '/home';
   }
 
   isLoggedIn(): boolean {
@@ -75,8 +132,8 @@ export class HeaderComponent {
     this.router.navigate(['/home']);
   }
 
-  navigateToEvents(){
-    this.router.navigate(['/event-dashboard'])
+  navigateToEvents() {
+    this.router.navigate(['/event-dashboard']);
   }
 
   back() {

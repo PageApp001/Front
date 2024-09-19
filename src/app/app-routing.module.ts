@@ -58,6 +58,9 @@ const routes: Routes = [
     component: NewsFormComponent,
   },
   {
+    path: 'details-news', component: NewsDetailsComponent
+  },
+  {
     path: 'carousel',
     component: CarouselComponent,
   },
@@ -69,6 +72,7 @@ const routes: Routes = [
     path: 'event-dashboard',
     component: EventDashboardComponent,
   },
+
 
 ];
 

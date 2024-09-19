@@ -1,13 +1,12 @@
 <div class="cont-main w-full p-4 flex justify-center bg-[#fafafa] ">
-    <div *ngIf="news" class="w-[60%] bg-white rounded-lg border border-gray-200 shadow-md hover:shadow-lg transition-shadow py-4 flex flex-col items-center ">
-        <h2 class="text-2xl font-bold">{{ news.titulo }}</h2>
-        <div class="w-[80%] text-justify whitespace-normal break-words "
+    <div *ngIf="news"
+        class="w-[60%] bg-white rounded-lg border border-gray-200 shadow-md hover:shadow-lg transition-shadow py-4 flex flex-col items-center ">
+        <h1 class="text-xl py-4">{{ news.titulo }}</h1>
+        <div class="w-[80%] text-base text-justify whitespace-normal break-words "
             [innerHTML]="transformDescription(news.descripcion)">
             {{ news.descripcion }}
         </div>
-        <img *ngIf="news.imagen" [src]="getImageUrl(news.imagen)" alt="{{ news.titulo }}"
-            class="w-full object-cover my-4">
-        <p  class="text-gray-500 text-sm">{{ news.fechaPublicacion | date:'medium' }}</p>
+        <img *ngIf="news.imagen" [src]="getImageUrl(news.imagen)" alt="{{ news.titulo }}" class="w-[80%] object-cover my-4">
+        <p class="text-sm">{{ news.fechaPublicacion | date:'medium' }}</p>
     </div>
 </div>
-

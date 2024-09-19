@@ -1,20 +1,22 @@
-<h1 mat-dialog-title>Add New Link</h1>
-<form [formGroup]="linkForm" (ngSubmit)="onSave()">
-    <div mat-dialog-content>
-        <mat-form-field appearance="fill">
-            <mat-label>Link Name</mat-label>
-            <input matInput placeholder="Enter link name" formControlName="nombre" required>
-            
-        </mat-form-field>
+<div class="add-link text-center px-4">
+    <h1 class="border-b" mat-dialog-title>Add New Link</h1>
+    <form [formGroup]="linkForm" (ngSubmit)="onSave()">
+        <div mat-dialog-content>
+            <mat-form-field class="w-full" appearance="fill">
+                <mat-label>Link Name</mat-label>
+                <input matInput placeholder="Enter link name" formControlName="nombre" required>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Link URL</mat-label>
-            <input matInput placeholder="Enter link URL" formControlName="url" required>
-        </mat-form-field>
-    </div>
+            </mat-form-field>
 
-    <div mat-dialog-actions>
-        <button mat-button type="button" (click)="onCancel()">Cancel</button>
-        <button mat-button type="submit" [disabled]="linkForm.invalid">Add</button>
-    </div>
-</form>
+            <mat-form-field  class="w-full" appearance="fill">
+                <mat-label>Link URL</mat-label>
+                <input matInput placeholder="Enter link URL" formControlName="url" required>
+            </mat-form-field>
+        </div>
+
+        <div mat-dialog-actions>
+            <button mat-button type="button" (click)="onCancel()">Cancel</button>
+            <button mat-button type="submit" [disabled]="linkForm.invalid">Add</button>
+        </div>
+    </form>
+</div>

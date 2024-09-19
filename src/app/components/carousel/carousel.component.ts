@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CarouselService } from 'src/app/services/services.components/carousel.service';
 
@@ -13,7 +14,9 @@ export class CarouselComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private carouselService: CarouselService
+    private carouselService: CarouselService,
+    private router : Router
+
   ) { }
 
   ngOnInit() {
@@ -41,4 +44,5 @@ export class CarouselComponent implements OnInit {
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }
+
 }

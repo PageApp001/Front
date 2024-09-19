@@ -1,32 +1,20 @@
-<div class="cont-main flex justify-between pr-2 pb-4 bg-[#3f51b5a6] ">
+<div class="cont-main flex justify-between bg-[#fafafa] ">
+  <!-- ----Menu lateral---- -->
   <app-sidebar class="mt-2"></app-sidebar>
-  <div class="cont-center p-1 bg-[#fafafa] flex flex-col mt-2 w-[65%] border-1 border-gray shadow-md rounded-md gap-2">
-    <app-carousel class="flex flex-col justify-center items-center gap-2 "></app-carousel>
-    <div class="subContMain p-4 h-full w-full bg-[#fafafa]">
+  <!-- ----Menu lateral---- -->
+  <!-- ----Publicaciones---- -->
+  <div class="cont-center p-1 flex flex-col mt-2 w-[65%]  gap-2">
+    <div class="subContMain p-4 h-full w-full ">
       <app-news-dashboard></app-news-dashboard>
     </div>
   </div>
-  <div
-    class="cont-lat flex flex-col gap-2 bg-[#fafafa] border-1 border-gray shadow-md rounded-md mt-2 p-3 w-[20%] h-fill">
-    <!-- ----sec links---- -->
+  <!-- ----Publicaciones---- -->
+  <div class="cont-lat flex flex-col gap-2  p-3 w-[19%] h-fill bg-white  border-l-2 border-gray shadow-md">
+    <!-- ----links---- -->
     <app-link></app-link>
-    <!-- ----sec links---- -->
-    <!-- seccion cumpleaños -->
-    <div class="sec-list-link bg-[#fafafa] h-full">
-      <div
-        class="birthday-image-content flex flex-col gap-2 w-full p-4 mb-4 bg-[white] border-1 border-gray shadow-md rounded-b">
-        <div class="title flex w-[100%] justify-center">
-          <h2 class="text-center border-b-2 border-gray w-[50%]">Cumpleaños</h2>
-        </div>
-        <!-- Iterar sobre todas las imágenes y mostrarlas -->
-        <div class="flex flex-wrap gap-4">
-          <div class="flex flex-col items-center p-2 border-gray border-2 rounded-md gap-2"
-            *ngFor="let image of imagenes">
-            <a href="http://localhost:3000/uploads/{{image.imagen}}" target="_blank"><img
-                [src]="getImageUrl(image.imagen)" class="birthday-thumbnail" alt="Imagen de cumpleaños"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- seccion cumpleaños -->
+    <!-- ----links---- -->
+    <!-- ----cumpleaños---- -->
+    <app-birthday-images></app-birthday-images>
+    <!-- ----cumpleaños---- -->
   </div>
+</div>

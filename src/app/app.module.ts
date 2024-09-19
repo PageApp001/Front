@@ -44,6 +44,7 @@ import { LinkComponent } from './components/link/link.component';
 import { EventDashboardComponent } from './components/event-dashboard/event-dashboard.component';
 import { EventFormComponent } from './components/event-dashboard/event-form/event-form.component';
 import { EventListComponent } from './components/event-dashboard/event-list/event-list.component';
+import { BirthdayImagesComponent } from './components/birthday-images/birthday-images.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { EventListComponent } from './components/event-dashboard/event-list/even
     EventDashboardComponent,
     EventFormComponent,
     EventListComponent,
+    BirthdayImagesComponent,
 
 
 

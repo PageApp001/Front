@@ -51,12 +51,12 @@ export class CarouselEditComponent implements OnInit {
         if (result.isConfirmed) {
           this.carouselService.deleteCarouselImage(id).subscribe(
             () => {
-              AlertComponent.showSuccess('¡Eliminado!', 'La noticia ha sido eliminada.');
+              AlertComponent.showSuccess('¡Eliminado!', 'La imagen ha sido eliminada.');
               this.ngOnInit(); // Recargar las imágenes después de eliminar una
             },
             (error: any) => {
-              console.error('Error al eliminar noticia', error);
-              AlertComponent.showError('Error', 'Hubo un problema al intentar eliminar la noticia.');
+              console.error('Error al eliminar la imagen', error);
+              AlertComponent.showError('Error', 'Hubo un problema al intentar eliminar la imagen.');
             }
           );
         }
@@ -65,7 +65,7 @@ export class CarouselEditComponent implements OnInit {
   }
 
   updateImageLink(id: number, link: string) {
-    const formData = { link }; // No necesitas FormData si solo envías el link
+    const formData = { link }; 
   
     this.carouselService.updateCarouselImage(id, formData).subscribe(() => {
       this.ngOnInit(); // Recargar las imágenes después de actualizar el link

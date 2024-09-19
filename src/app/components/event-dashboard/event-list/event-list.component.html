@@ -1,21 +1,36 @@
 <div *ngIf="events.length > 0; else noEvents">
-    <h2>Lista de Eventos</h2>
+    <h1 class="border-b p-2">Lista de Eventos</h1>
     <ul class="flex gap-4 ">
-        <li class="flex flex-col justify-between gap-2 p-4 w-[25%] bg-white rounded-lg border border-gray-200 shadow-md hover:shadow-lg transition-shadow "
+        <li class="flex flex-col justify-between gap-2 w-[25%] bg-white rounded-t-lg border border-gray-200 shadow-md hover:shadow-lg transition-shadow "
             *ngFor="let event of events">
-            <h2 class="border-b-2">{{ event.nombre }}</h2>
-            <div class="descripcion border p-1 h-[150px] text-justify whitespace-normal break-words">
+
+            <h2 class=" flex justify-center items-center rounded-t-lg p-2 h-[25%] border-b-2 text-white bg-[#3f51b5a6]">
+                {{ event.nombre }}
+            </h2>
+
+            <div class="descripcion border-y mx-4 pt-2 h-[250px] text-justify text-base whitespace-normal break-words">
                 {{ event.descripcion }}
             </div>
-            
-            <p><strong>Fecha de Inicio:</strong> {{ event.fechaInicio | date }} <strong> Hora:</strong> {{
-                event.horaInicio }}</p>
-            <p><strong>Fecha de Publicación:</strong> {{ event.fechaPublicacion | date : 'medium' }}</p>
+
+            <div class="date mx-4 ">
+                <p><strong>Fecha de Inicio:</strong> {{ event.fechaInicio | date }} <strong> Hora:</strong> {{
+                    event.horaInicio }}
+                </p>
+                <p>
+                    <strong>Fecha de Publicación:</strong>
+                    {{ event.fechaPublicacion | date : 'medium' }}
+                </p>
+            </div>
+            <div class="button text-center mb-2 ">
+                <button *ngIf="isAdmin" mat-raised-button color="warn" class=" w-[30%] text-white py-1 px-3 rounded "
+                    (click)="deleteEvent(event.id)">Eliminar</button>
+            </div>
+
         </li>
     </ul>
+
 </div>
 
 <ng-template #noEvents>
     <p>No hay eventos disponibles.</p>
 </ng-template>
-

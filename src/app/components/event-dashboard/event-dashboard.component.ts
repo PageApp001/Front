@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EventFormComponent } from './event-form/event-form.component';
 import { EventService } from 'src/app/services/services.components/event.service';
 import { AlertComponent } from '../alert/alert.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-event-dashboard',
@@ -11,16 +12,21 @@ import { AlertComponent } from '../alert/alert.component';
 })
 export class EventDashboardComponent implements OnInit {
   events: any[] = [];
-  constructor(public dialog: MatDialog, private eventService : EventService) {}
+  isAdmin: boolean = false;
+  constructor(
+    public dialog: MatDialog,
+    private eventService: EventService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.loadEvents();
+    const userRole = this.authService.getUserRole();
+    this.isAdmin = userRole === 'admin';
   }
   loadEvents(): void {
-    
     this.eventService.getEvents().subscribe(
       (data: any[]) => {
-        
         this.events = data;
       },
       (error: any) => {
@@ -35,10 +41,15 @@ export class EventDashboardComponent implements OnInit {
       data: {
         event: event
           ? { ...event }
-          : { nombre: '', descripcion: '', fechaInicio: '', horaInicio: '', fechaPublicacion:''},
+          : {
+              nombre: '',
+              descripcion: '',
+              fechaInicio: '',
+              horaInicio: '',
+              fechaPublicacion: '',
+            },
         // editMode: !!event,
       },
-      
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {

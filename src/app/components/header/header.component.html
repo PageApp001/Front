@@ -1,23 +1,38 @@
-<div id="contMain" class="contMain flex p-1 justify-between bg-[#fafafa] border-1 border-gray shadow-md rounded-b">
-  <div class="logo flex mx-2 p-2">
+<div id="contMain"
+  class="contMain flex p-1 justify-between bg-[#fafafa] border-1 border-gray shadow-md">
+  <div class="logo flex w-[30%] mx-2 p-2">
     <button (click)="navigateHome()" type="button">
       <img class="w-[100px] h-[80px]" src="../../../assets/images/logo color.png" alt="" />
     </button>
   </div>
 
-  <div class="nav w-[50%] mb-4 flex items-end justify-end mx-4">
+  <div class="flex justify-center w-[30%] h-full p-2 ">
+
+    <div class="text-center w-full ">
+      <p class="font-mono text-[#3f48cc] text-4xl">
+        {{ currentTime }}
+      </p>
+      <p class="font-mono  text-[#3f48cc] text-2xl">
+        {{ currentDate }}
+      </p>
+    </div>
+
+  </div>
+
+  <div class="nav w-[30%] mb-4 flex items-end justify-end mx-4">
     <div class="nav-list flex justify-evenly gap-8">
       <button
-        class="p-2 rounded-lg text-base font-semibold text-[#3f48cc] cursor-pointer hover:bg-[#3f48cc] hover:text-white"
-        *ngIf="isLoggedIn()" type="button " (click)="navigateToEvents()">
+        class="p-1 px-2 rounded-md text-lg text-[#3f48cc] cursor-pointer hover:bg-[#3f48cc] hover:text-white "
+        *ngIf="showEventButton" type="button " (click)="navigateToEvents()">
         Eventos
       </button>
 
       <div class="flex items-center">
-        <li class="text-base font-semibold" *ngIf="isLoggedIn()">
+        <li class="text-lg" *ngIf="isLoggedIn()">
           {{ nombre }} {{ apellido }}
         </li>
       </div>
+      
     </div>
     <div class="ml-4">
       <div class="btn-login-registro flex">
@@ -26,7 +41,7 @@
         </button>
       </div>
       <div class="btnBack">
-        <button mat-raised-button color="primary" *ngIf="isLoggedIn() && !isHomeRoute()" (click)="back()" type="button">
+        <button class="text-lg" mat-raised-button color="primary" *ngIf="isLoggedIn() && !isHomeRoute()" (click)="back()" type="button">
           Volver
         </button>
       </div>
