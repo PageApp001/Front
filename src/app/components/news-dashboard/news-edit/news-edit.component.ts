@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NewsService } from '../../../services/services.components/news.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-news-edit',
@@ -17,7 +18,8 @@ export class NewsEditComponent implements OnInit {
     private fb: FormBuilder,
     private newsService: NewsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+  
   ) {
     this.newsForm = this.fb.group({
       titulo: [''],
