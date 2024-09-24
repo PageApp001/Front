@@ -11,7 +11,7 @@ import { environment } from '../enviroments/enviroment';
 })
 export class AuthService {
   private tokenKey = 'token';
-  private endpoint:string; // https://back-q0sn.onrender.com
+  private endpoint= 'https://back-q0sn.onrender.com/api/user/login';
 
   private userInfoSubject = new BehaviorSubject<any>(null);
   userInfo$ = this.userInfoSubject.asObservable();
