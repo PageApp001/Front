@@ -98,6 +98,13 @@ export class NewsFormComponent implements OnInit {
           );
           console.log('Noticia actualizada exitosamente', response);
           if (this.dialogRef) {
+            this.notificationService.showNotification(
+              'La publicación ha sido editada',
+              {
+                body: 'Tu publicación ha sido editada con éxito.',
+                icon: 'assets/images/logo.jpg',
+              }
+            );
             this.dialogRef.close(response);
           } else {
             this.router.navigate(['/']);
