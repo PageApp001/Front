@@ -53,7 +53,7 @@ export class EventDashboardComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.loadEvents(); // Asegurarse de cargar las noticias después de cerrar el diálogo
+        this.loadEvents(); 
       }
     });
   }

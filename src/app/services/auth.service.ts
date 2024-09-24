@@ -4,13 +4,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AuthResponse } from '../interfaces/AuthResponse'
 import { jwtDecode } from 'jwt-decode';
+import { environment } from '../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private tokenKey = 'token';
-  private apiUrl = 'http://localhost:3000/api';
+  private endpoint:string; // https://back-q0sn.onrender.com
 
   private userInfoSubject = new BehaviorSubject<any>(null);
   userInfo$ = this.userInfoSubject.asObservable();
@@ -20,6 +21,7 @@ export class AuthService {
     if (token) {
       this.setUserInfo(token);
     }
+    this.endpoint = environment.endpoint
   }
   private setUserInfo(token: string) {
     const decodedToken: any = jwtDecode(token);
@@ -31,7 +33,7 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, { email, password }).pipe(
+    return this.http.post<AuthResponse>(`${this.endpoint}/login`, { email, password }).pipe(
       tap(response => {
         if (response && response.token) {
           this.setToken(response.token);
@@ -46,7 +48,7 @@ export class AuthService {
   }
 
   register(nombre: string, apellido: string, cargo: string, dependencia: string, email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/user/create`, { nombre, apellido, cargo, dependencia, email, password });
+    return this.http.post(`${this.endpoint}/user/create`, { nombre, apellido, cargo, dependencia, email, password });
   }
 
   isLoggedIn(): boolean {

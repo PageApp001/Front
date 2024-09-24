@@ -29,7 +29,7 @@ export class NewsFormComponent implements OnInit {
     this.newsForm = this.fb.group({
       titulo: ['', Validators.required],
       descripcion: ['', Validators.required],
-      fechaPublicacion: ['']
+      fechaPublicacion: [''],
     });
 
     if (data) {

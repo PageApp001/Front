@@ -11,6 +11,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { CarouselEditComponent } from './components/carousel/carousel-edit/carousel-edit.component';
 import { NewsDetailsComponent } from './components/news-dashboard/news-details/news-details.component';
 import { EventDashboardComponent } from './components/event-dashboard/event-dashboard.component';
+import { EventListComponent } from './components/event-dashboard/event-list/event-list.component';
 
 const routes: Routes = [
   {
@@ -58,7 +59,8 @@ const routes: Routes = [
     component: NewsFormComponent,
   },
   {
-    path: 'details-news', component: NewsDetailsComponent
+    path: 'details-news',
+    component: NewsDetailsComponent,
   },
   {
     path: 'carousel',
@@ -72,8 +74,6 @@ const routes: Routes = [
     path: 'event-dashboard',
     component: EventDashboardComponent,
   },
-
-
 ];
 
 @NgModule({
