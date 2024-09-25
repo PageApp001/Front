@@ -40,7 +40,7 @@ export class NewsListComponent implements OnInit {
   }
 
   getImageUrl(imageName: string): string {
-    return `http://localhost:3000/uploads/${imageName}`;
+    return `https://back-q0sn.onrender.com/uploads/${imageName}`;
   }
 
   editNews(news: any): void {
