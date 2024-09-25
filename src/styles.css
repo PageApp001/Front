@@ -13,10 +13,11 @@ body {
 .toast-container {
   text-align: center;
   position: fixed;
-  z-index: 10000; /* Asegura que esté por encima de otros elementos */
+  z-index: 10000;
+  /* Asegura que esté por encima de otros elementos */
   /* Distancia desde la parte superior */
-  top: 50px; 
-   /* Distancia desde la derecha */
+  top: 50px;
+  /* Distancia desde la derecha */
   right: 50px;
   width: 200px;
   height: 150px;
@@ -24,47 +25,61 @@ body {
 
 /* Estilo base de la notificación */
 .toast {
-  background-color: #323232; /* Color de fondo */
-  color: #fff; /* Color del texto */
-  border-radius: 8px; /* Borde redondeado */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
-  margin-bottom: 15px; /* Espacio entre notificaciones */
+  background-color: #323232;
+  /* Color de fondo */
+  color: #fff;
+  /* Color del texto */
+  border-radius: 8px;
+  /* Borde redondeado */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Sombra */
+  margin-bottom: 15px;
+  /* Espacio entre notificaciones */
 }
 
 /* Estilos para diferentes tipos de notificaciones */
 .toast-success {
   color: white;
-  font-size:medium;
+  font-size: medium;
   padding: 15px;
   border-radius: 5px;
-  background-color: #41c547; /* Color de fondo para éxito */
+  background-color: #41c547;
+  /* Color de fondo para éxito */
 }
 
 .toast-info {
   color: white;
-  font-size:medium;
+  font-size: medium;
   padding: 15px;
   border-radius: 5px;
-  background-color: #1976D2; /* Color de fondo para información */
+  background-color: #1976D2;
+  /* Color de fondo para información */
 }
 
 .toast-warning {
   color: white;
-  font-size:medium;
+  font-size: medium;
   padding: 15px;
   border-radius: 5px;
-  background-color: #FB8C00; /* Color de fondo para advertencia */
+  background-color: #FB8C00;
+  /* Color de fondo para advertencia */
 }
 
 .toast-error {
   color: white;
-  font-size:medium;
+  font-size: medium;
   padding: 15px;
   border-radius: 5px;
-  background-color: #e53835; /* Color de fondo para error */
+  background-color: #e53835;
+  /* Color de fondo para error */
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
 
-
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
