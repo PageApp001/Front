@@ -14,17 +14,19 @@ export class HeaderComponent {
   password: string = '';
 
   showLoginButton: boolean = true;
-  showEventButton: boolean = true;
+  showBackButton: boolean = true;
 
   currentTime: string = '';
   currentDate: string = '';
 
-  // Lista de rutas donde el botón de eventos debe ocultarse
-  hiddenEventButtonRoutes: string[] = [
-    '/event-dashboard',
+  // Lista de rutas donde se oculta el botón de ingresar
+  rutasOcultarBotonLogin: string[] = [
     '/login',
     '/signin',
+    '/event-dashboard',
+    '/details-news/:id',
   ];
+  rutasConId: string[] = ['/news']; // Rutas que tienen un ID dinámico
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -32,11 +34,9 @@ export class HeaderComponent {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         // Oculta el botón de ingresar en la ruta de login
-        this.showLoginButton = event.url !== '/login';
-        // Ocultar el botón de navegación a eventos en rutas especificadas
-        this.showEventButton = !this.hiddenEventButtonRoutes.includes(
-          event.url
-        );
+        // Verifica si la URL actual está en la lista de rutas específicas o es una ruta con un ID dinámico
+        this.showLoginButton = !this.shouldHideButton(event.url);
+        this.showBackButton = event.url !== '/';
       }
     });
 
@@ -52,6 +52,22 @@ export class HeaderComponent {
 
     this.updateTimeAndDate();
     setInterval(() => this.updateTimeAndDate(), 1000);
+  }
+
+  shouldHideButton(url: string): boolean {
+    // Comprobar si la URL está en las rutas estáticas
+    if (this.rutasOcultarBotonLogin.includes(url)) {
+      return true;
+    }
+
+    // Comprobar si la URL comienza con alguna de las rutas dinámicas (que tienen un ID)
+    for (let ruta of this.rutasConId) {
+      if (url.startsWith(ruta)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   login() {
@@ -130,10 +146,6 @@ export class HeaderComponent {
 
   navigateHome() {
     this.router.navigate(['/home']);
-  }
-
-  navigateToEvents() {
-    this.router.navigate(['/event-dashboard']);
   }
 
   back() {

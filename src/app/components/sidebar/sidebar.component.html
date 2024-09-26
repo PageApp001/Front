@@ -1,41 +1,42 @@
-<mat-sidenav-container *ngIf="isLoggedIn()" class="sidenav-container rounded-md">
-<mat-sidenav #sidenav class="sidenav" mode="side" [opened]="false">
-  <mat-toolbar>Menú</mat-toolbar>
-  <mat-nav-list>
+<mat-sidenav-container class="sidenav-container rounded-md">
+  <mat-sidenav #sidenav class="sidenav" mode="side" [opened]="false">
+    <mat-toolbar>Menú</mat-toolbar>
+    <mat-nav-list>
 
-    <!-- Inicio del ancla desplegable -->
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title class="text-base">
-          Utilidades
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-nav-list>
-        <a mat-list-item href="https://www.ilovepdf.com/es/dividir_pdf" target="blank">Dividir PDF</a>
-        <a mat-list-item href="https://www.ilovepdf.com/es/comprimir_pdf " target="blank">Comprimir PDF</a>
-        <a mat-list-item href="https://www.ilovepdf.com/es/pdf_a_word" target="blank">Convertir PDF a WORD</a>
-        <a mat-list-item href="https://www.ilovepdf.com/es/word_a_pdf" target="blank">Convertir WORD a PDF</a>
-        <a mat-list-item href="https://www.ilovepdf.com/es/pdf_a_excel" target="blank">Convertir PDF a EXCEL</a>
-        <a mat-list-item href="https://www.ilovepdf.com/es/excel_a_pdf" target="blank">Convertir EXCEL a PDF</a>
-        <a mat-list-item href="https://www.ilovepdf.com/es/jpg_a_pdf" target="blank">Convertir JPG a PDF</a>
-      </mat-nav-list>
-    </mat-expansion-panel>
-    <!-- Fin del ancla desplegable -->
-    <a *ngIf="isLoggedIn() && isAdmin" mat-list-item>
-      <button class="w-full flex justify-start" (click)="navigateToAdmin()" type="button">Admin dashboard</button>
-    </a>
-    <a mat-list-item (click)="navigateToLogin()">Cerrar sesión</a>
-  </mat-nav-list>
-</mat-sidenav>
+      <!-- Inicio del ancla desplegable -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="text-base">
+            Utilidades
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item href="https://www.ilovepdf.com/es/dividir_pdf" target="blank">Dividir PDF</a>
+          <a mat-list-item href="https://www.ilovepdf.com/es/comprimir_pdf " target="blank">Comprimir PDF</a>
+          <a mat-list-item href="https://www.ilovepdf.com/es/pdf_a_word" target="blank">Convertir PDF a WORD</a>
+          <a mat-list-item href="https://www.ilovepdf.com/es/word_a_pdf" target="blank">Convertir WORD a PDF</a>
+          <a mat-list-item href="https://www.ilovepdf.com/es/pdf_a_excel" target="blank">Convertir PDF a EXCEL</a>
+          <a mat-list-item href="https://www.ilovepdf.com/es/excel_a_pdf" target="blank">Convertir EXCEL a PDF</a>
+          <a mat-list-item href="https://www.ilovepdf.com/es/jpg_a_pdf" target="blank">Convertir JPG a PDF</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <!-- Fin del ancla desplegable -->
+      <a *ngIf="isLoggedIn() && isAdmin" mat-list-item>
+        <button class="w-full flex justify-start" (click)="navigateToAdmin()" type="button">Admin dashboard</button>
+      </a>
+      <a mat-list-item (click)="navigateToEvents()"  >Eventos</a>
+      <a *ngIf="isLoggedIn()" mat-list-item (click)="navigateToLogin()">Cerrar sesión</a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-<mat-sidenav-content>
-  <mat-toolbar>
-    <button mat-icon-button (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span></span>
-  </mat-toolbar>
-  <!-- Aquí va el contenido principal de la aplicación -->
-  <router-outlet></router-outlet>
-</mat-sidenav-content>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span></span>
+    </mat-toolbar>
+    <!-- Aquí va el contenido principal de la aplicación -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>

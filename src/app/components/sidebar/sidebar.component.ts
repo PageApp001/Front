@@ -5,16 +5,12 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent {
-
   isAdmin: boolean = false;
 
-  constructor(
-    private authService: AuthService,
-    private router:Router
-  ){}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     // Verifica si el usuario tiene el rol de administrador al inicializar el componente
@@ -22,17 +18,20 @@ export class SidebarComponent {
     this.isAdmin = userRole === 'admin';
   }
 
-  navigateToLogin(){
+  navigateToLogin() {
     this.authService.logout();
     this.router.navigate(['/login']);
-    }
+  }
 
-    navigateToAdmin(){
-      this.router.navigate(['/admin-dashboard'])
-    }
+  navigateToAdmin() {
+    this.router.navigate(['/admin-dashboard']);
+  }
 
-    isLoggedIn(): boolean {
-      return this.authService.isLoggedIn();
-    }
+  navigateToEvents() {
+    this.router.navigate(['/event-dashboard']);
+  }
 
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
 }

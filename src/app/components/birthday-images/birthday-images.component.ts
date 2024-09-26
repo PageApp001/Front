@@ -81,6 +81,6 @@ export class BirthdayImagesComponent implements OnInit {
   }
 
   getImageUrl(imageName: string): string {
-    return `https://back-q0sn.onrender.com/uploads/${imageName}`;
+    return `http://localhost:3000/uploads/${imageName}`;
   }
 }
