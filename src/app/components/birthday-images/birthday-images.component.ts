@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertComponent } from '../alert/alert.component';
 import { BirthdaylService } from 'src/app/services/services.components/birthday.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { environment } from 'src/app/enviroments/enviroment';
 
 @Component({
   selector: 'app-birthday-images',
@@ -12,10 +13,12 @@ export class BirthdayImagesComponent implements OnInit {
   imagenes: { id: number; imagen: string }[] = [];
   isAdmin: boolean = false;
 
+  endpointImage:string;
+
   constructor(
     private birthdayService: BirthdaylService,
     private authService: AuthService
-  ) {}
+  ) {this.endpointImage = environment.endpointImage}
 
   ngOnInit(): void {
     this.loadBirthday();
@@ -81,6 +84,6 @@ export class BirthdayImagesComponent implements OnInit {
   }
 
   getImageUrl(imageName: string): string {
-    return `http://localhost:3000/uploads/${imageName}`;
+    return `${this.endpointImage}${imageName}`;
   }
 }

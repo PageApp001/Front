@@ -4,6 +4,7 @@ import { AlertComponent } from '../../alert/alert.component';
 import { NewsService } from '../../../services/services.components/news.service';
 import { NewsFormComponent } from '../news-form/news-form.component';
 import { AuthService } from 'src/app/services/auth.service';
+import { environment } from 'src/app/enviroments/enviroment';
 
 @Component({
   selector: 'app-news-list',
@@ -15,11 +16,13 @@ export class NewsListComponent implements OnInit {
   isAdmin: boolean = false;
   selectedNews: any = null;
 
+  endpointImage:string;
+
   constructor(
     private newsService: NewsService,
     public dialog: MatDialog,
     private authService: AuthService
-  ) { }
+  ) { this.endpointImage = environment.endpointImage}
 
   ngOnInit(): void {
     // Verifica si el usuario tiene el rol de administrador al inicializar el componente
@@ -40,7 +43,7 @@ export class NewsListComponent implements OnInit {
   }
 
   getImageUrl(imageName: string): string {
-    return `http://localhost:3000/uploads/${imageName}`;
+    return `${this.endpointImage}${imageName}`;
   }
 
   editNews(news: any): void {
