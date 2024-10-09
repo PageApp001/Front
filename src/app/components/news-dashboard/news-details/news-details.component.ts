@@ -23,7 +23,7 @@ export class NewsDetailsComponent implements OnInit {
   }
 
   getImageUrl(imageName: string): string {
-    return `http://localhost:3000/uploads/${imageName}`;
+    return `http://192.168.100.42:3000/uploads/${imageName}`;
   }
 
   loadNewsDetails(id: number): void {  // Cambiar el tipo de id a number

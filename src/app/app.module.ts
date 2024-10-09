@@ -45,6 +45,7 @@ import { EventDashboardComponent } from './components/event-dashboard/event-dash
 import { EventFormComponent } from './components/event-dashboard/event-form/event-form.component';
 import { EventListComponent } from './components/event-dashboard/event-list/event-list.component';
 import { BirthdayImagesComponent } from './components/birthday-images/birthday-images.component';
+import { NotificationService } from './services/notification.service';
 
 
 @NgModule({
@@ -114,7 +115,7 @@ import { BirthdayImagesComponent } from './components/birthday-images/birthday-i
 
   ],
   providers: [UserService,
-    AuthService
+    AuthService, NotificationService
   ],
   bootstrap: [AppComponent]
 })

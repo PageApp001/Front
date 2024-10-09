@@ -68,9 +68,15 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+
+
+
+
+
+          
           "configurations": {
             "production": {
-              "browserTarget": "intranet:build:production"
+              "browserTarget": "intranet:build:poduction"
             },
             "development": {
               "browserTarget": "intranet:build:development"
@@ -110,4 +116,8 @@
   "cli": {
     "analytics": "5a0a3972-7c53-4f1b-abf1-3adb29bd7ab0"
   }
+
+ 
+  
+  
 }

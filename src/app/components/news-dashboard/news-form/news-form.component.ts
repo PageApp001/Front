@@ -39,6 +39,8 @@ export class NewsFormComponent implements OnInit {
         this.newsForm.patchValue(data.news);
       }
     }
+
+    this.notificationService.subscribeToNotifications();
   }
 
   ngOnInit(): void {
@@ -51,6 +53,13 @@ export class NewsFormComponent implements OnInit {
         }
       });
     }
+  
+    // Solicitar permiso de notificaciones al cargar el componente
+    this.notificationService.askPermission().then(() => {
+      this.notificationService.subscribeToNotifications();
+    }).catch((error) => {
+      console.error('Permiso de notificaciones no concedido:', error);
+    });
   }
 
   loadNews(id: number): void {
@@ -89,60 +98,57 @@ export class NewsFormComponent implements OnInit {
       formData.append('imagen', this.selectedFile);
     }
 
-    if (this.isEditMode && this.newsId) {
-      this.newsService.updateNews(this.newsId, formData).subscribe(
-        (response: any) => {
-          AlertComponent.showSuccess(
-            'Noticia actualizada',
-            'Noticia actualizada exitosamente'
-          );
-          console.log('Noticia actualizada exitosamente', response);
-          if (this.dialogRef) {
-            this.notificationService.showNotification(
-              'La publicación ha sido editada',
-              {
-                body: 'Tu publicación ha sido editada con éxito.',
-                icon: 'assets/images/logo.jpg',
-              }
-            );
-            this.dialogRef.close(response);
-          } else {
-            this.router.navigate(['/']);
+  // Editar noticia
+  if (this.isEditMode && this.newsId) {
+    this.newsService.updateNews(this.newsId, formData).subscribe(
+      (response: any) => {
+        AlertComponent.showSuccess(
+          'Noticia actualizada',
+          'Noticia actualizada exitosamente'
+        );
+        this.notificationService.showNotification(
+          'La publicación ha sido editada',
+          {
+            body: 'Tu publicación ha sido editada con éxito.',
+            icon: 'assets/images/logo.jpg',
+            requireInteraction: true,
           }
-        },
-        (error: any) => {
-          AlertComponent.showError('Error', 'Error al actualizar la noticia');
-          console.error('Error al actualizar la noticia', error);
+        );
+        if (this.dialogRef) {
+          this.dialogRef.close(response);
+        } else {
+          this.router.navigate(['/']);
         }
-      );
-    } else {
-      this.newsService.createNews(formData).subscribe(
-        (response: any) => {
-          AlertComponent.showSuccess(
-            'Noticia creada',
-            'Noticia creada exitosamente'
-          );
-          console.log('Noticia creada exitosamente', response);
-          if (this.dialogRef) {
-            this.notificationService.showNotification(
-              'Nueva publicación creada',
-              {
-                body: 'Tu publicación ha sido creada con éxito.',
-                icon: 'assets/images/logo.jpg',
-              }
-            );
-            this.dialogRef.close(response);
-          } else {
-            this.router.navigate(['/']);
+      },
+      (error: any) => {
+        AlertComponent.showError('Error', 'Error al actualizar la noticia');
+      }
+    );
+  } else { // Crear noticia
+    this.newsService.createNews(formData).subscribe(
+      (response: any) => {
+        AlertComponent.showSuccess(
+          'Noticia creada',
+          'Noticia creada exitosamente'
+        );
+        this.notificationService.showNotification(
+          'Nueva publicación creada',
+          {
+            body: 'Tu publicación ha sido creada con éxito.',
+            icon: 'assets/images/logo.jpg',
           }
-        },
-
-        (error: any) => {
-          AlertComponent.showError('Error', 'Error al crear la noticia');
-          console.error('Error al crear la noticia', error);
+        );
+        if (this.dialogRef) {
+          this.dialogRef.close(response);
+        } else {
+          this.router.navigate(['/']);
         }
-      );
-    }
+      },
+      (error: any) => {
+        AlertComponent.showError('Error', 'Error al crear la noticia');
+      }
+    );
+  }
   }
 
   onFileChange(event: any): void {

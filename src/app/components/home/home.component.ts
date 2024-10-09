@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
     const userRole = this.authService.getUserRole();
     this.isAdmin = userRole === 'admin';
     this.isEditor = userRole === 'editor';
+    
   }
 
   isLoggedIn(): boolean {
