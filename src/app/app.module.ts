@@ -46,6 +46,12 @@ import { EventFormComponent } from './components/event-dashboard/event-form/even
 import { EventListComponent } from './components/event-dashboard/event-list/event-list.component';
 import { BirthdayImagesComponent } from './components/birthday-images/birthday-images.component';
 import { NotificationService } from './services/notification.service';
+import { InformationComponent } from './components/information/information.component';
+import { MisionComponent } from './components/mision/mision.component';
+import { VisionComponent } from './components/vision/vision.component';
+import { ValoresComponent } from './components/valores/valores.component';
+import { MapaComponent } from './components/mapa/mapa.component';
+import { PoliticasComponent } from './components/politicas/politicas.component';
 
 
 @NgModule({
@@ -73,8 +79,12 @@ import { NotificationService } from './services/notification.service';
     EventFormComponent,
     EventListComponent,
     BirthdayImagesComponent,
-
-
+    InformationComponent,
+    MisionComponent,
+    VisionComponent,
+    ValoresComponent,
+    MapaComponent,
+    PoliticasComponent,
 
   ],
   imports: [

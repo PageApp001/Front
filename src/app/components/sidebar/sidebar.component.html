@@ -24,7 +24,8 @@
       <a *ngIf="isLoggedIn() && isAdmin" mat-list-item>
         <button class="w-full flex justify-start" (click)="navigateToAdmin()" type="button">Admin dashboard</button>
       </a>
-      <a mat-list-item (click)="navigateToEvents()"  >Eventos</a>
+      <a mat-list-item (click)="navigateToInformation()">Calidad EMCA</a> 
+      <a mat-list-item (click)="navigateToEvents()" >Eventos</a>
       <a *ngIf="isLoggedIn()" mat-list-item (click)="navigateToLogin()">Cerrar sesión</a>
     </mat-nav-list>
   </mat-sidenav>

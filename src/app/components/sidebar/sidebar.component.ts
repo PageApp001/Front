@@ -22,7 +22,9 @@ export class SidebarComponent {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
-
+  navigateToInformation() {
+    this.router.navigate(['/information']); // Nueva función para navegar a /information
+  }
   navigateToAdmin() {
     this.router.navigate(['/admin-dashboard']);
   }
