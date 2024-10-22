@@ -1,0 +1,14 @@
+<h2 *ngIf="!editMode">Crear Información</h2>
+<h2 *ngIf="editMode">Editar Información</h2>
+
+<form [formGroup]="informationForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Título</mat-label>
+    <input matInput formControlName="titulo" placeholder="Título de la información">
+    <mat-error *ngIf="informationForm.get('titulo')?.hasError('required')">El título es obligatorio</mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="informationForm.invalid">
+    {{ editMode ? 'Actualizar' : 'Crear' }}
+  </button>
+</form>

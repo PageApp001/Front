@@ -13,11 +13,7 @@ import { NewsDetailsComponent } from './components/news-dashboard/news-details/n
 import { EventDashboardComponent } from './components/event-dashboard/event-dashboard.component';
 import { EventListComponent } from './components/event-dashboard/event-list/event-list.component';
 import { InformationComponent } from './components/information/information.component';
-import { MisionComponent } from './components/mision/mision.component';
-import { VisionComponent } from './components/vision/vision.component';
-import { ValoresComponent } from './components/valores/valores.component';
-import { MapaComponent } from './components/mapa/mapa.component';
-import { PoliticasComponent } from './components/politicas/politicas.component';
+import { ArchivosComponent } from './components/archivos/archivos.component';
 
 const routes: Routes = [
   {
@@ -84,12 +80,10 @@ const routes: Routes = [
     path: 'information',  // Nueva ruta para InformationComponent
     component: InformationComponent,
   },
-  { path: 'mision', component: MisionComponent },
-  { path: 'vision', component: VisionComponent },
-  { path: 'valores', component: ValoresComponent },
-  { path: 'mapa', component: MapaComponent },
-
-  { path: 'politicas', component: PoliticasComponent },
+  {
+    path: 'archivos',
+    component: ArchivosComponent,
+  },
 ];
 
 @NgModule({

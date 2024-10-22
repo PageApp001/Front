@@ -1,0 +1,24 @@
+<div class="cont-list">
+  <h2>Lista de Información</h2>
+  <mat-table [dataSource]="informationList" class="mat-elevation-z8">
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Título </mat-header-cell>
+      <mat-cell *matCellDef="let info"> {{ info.title }} </mat-cell>
+    </ng-container>
+    <a href="">Ver más</a>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+      <div>
+
+        <mat-cell *ngIf="isLoggedIn() && isAdmin">
+          <ng-container *matCellDef="let info">
+          <button mat-button [routerLink]="['/edit', info.id]">Editar</button>
+          <button mat-button [routerLink]="['/details', info.id]">Detalles</button>
+        </ng-container>
+        </mat-cell>
+      </div>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="['title', 'description', 'actions']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['title', 'description', 'actions']"></mat-row>
+  </mat-table>
+</div>

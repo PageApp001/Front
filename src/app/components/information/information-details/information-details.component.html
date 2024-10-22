@@ -1,0 +1,6 @@
+<div class="cont-details">
+  <h2>{{ information?.title }}</h2>
+  <img [src]="getImageUrl(information?.image)" alt="Información imagen" *ngIf="information?.image">
+  <p [innerHTML]="transformDescription(information?.description)"></p>
+  <p><strong>Fecha de Publicación:</strong> {{ information?.publicationDate | date }}</p>
+</div>

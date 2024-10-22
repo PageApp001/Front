@@ -1,59 +1,19 @@
-<h1>Títulos</h1>
-
-<div class="todo">
-
-    <section class="description">
-        <!-- Sección de Misión -->
-        <article class="info-card">
-            <header class="info-header">
-                <h2>Misión</h2>
-            </header>
-            <img class="info-image" src="../../../assets/images/mision.png" alt="Imagen representando la misión de la empresa">
-            <a class="info-link" mat-list-item (click)="navigateToMision()">Mostrar más</a>
-        </article>
-        
-        <div class="space"></div>
-        
-        <!-- Sección de Visión -->
-        <article class="info-card">
-            <header class="info-header">
-                <h2>Visión</h2>
-            </header>
-            <img class="info-image" src="../../../assets/images/Vision.jpg" alt="Imagen representando la visión de la empresa">
-            <a class="info-link" mat-list-item (click)="navigateToVision()">Mostrar más</a>
-        </article>
-        
-        <div class="space"></div>
-        
-        <!-- Sección de Valores Empresariales -->
-        <article class="info-card">
-            <header class="info-header">
-                <h2>Valores Empresariales</h2>
-            </header>
-            <img class="info-image" src="../../../assets/images/images.png" alt="Imagen representando los valores empresariales">
-            <a class="info-link" mat-list-item (click)="navigateToValores()">Mostrar más</a>
-        </article>
-        
-        <div class="space"></div>
-
-        
-        <div class="space"></div>
-    
-        <!-- Sección Baja (Organigrama y Políticas) -->
-        <section class="bajo">
-            <!-- Sección de Organigrama -->
-            <article class="info-card">
-                <header class="info-header">
-                    <h2>Organigrama</h2>
-                </header>
-                <img class="info-image" src="../../../assets/images/organigrama.png" alt="Imagen del organigrama de la empresa">
-                <a class="info-link" href="https://emca-calarca-quindio.micolombiadigital.gov.co/sites/emca-calarca-quindio/content/files/000307/15315_ode02-estructura-organizacional.pdf">Mostrar más</a>
-            </article>
-            
-            <div class="space3"></div>
-            
-            <!-- Sección de Políticas -->
-          
-        </section>
-    </section>
+<div class="information-dashboard">
+  <h1>Panel de Información</h1>
+  <button mat-raised-button *ngIf="isLoggedIn() && isAdmin" color="primary" (click)="openDialog()">Crear Información</button>
+  
+  <div *ngIf="informationList.length > 0; else noInfo" class="card-container">
+    <div *ngFor="let info of informationList" class="card">
+      <h2>{{ info.titulo }}</h2>
+      <a  mat-list-item (click)="navigateToArchivos()">Ver más</a>
+      <div class="card-actions" *ngIf="isLoggedIn() && isAdmin">
+        <button mat-button color="accent" (click)="openDialog(info)">Editar</button>
+        <button mat-button color="warn" (click)="deleteInformation(info.id)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #noInfo>
+    <p class="no-info">No hay información disponible.</p>
+  </ng-template>
 </div>

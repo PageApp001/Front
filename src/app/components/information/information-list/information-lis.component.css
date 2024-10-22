@@ -1,0 +1,22 @@
+.quality-list {
+  margin-top: 20px;
+}
+
+.quality-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.quality-list li {
+  background: #ffffff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  margin-left: 10px;
+}

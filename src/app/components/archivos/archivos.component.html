@@ -1,0 +1,34 @@
+<div class="file-upload-container">
+  <h3>Sube tus Archivos</h3>
+  <input type="file" (change)="onFilesSelected($event)" webkitdirectory multiple />
+  <button class="upload" (click)="uploadFiles()">Subir Archivos</button>
+
+  <div class="content-container">
+    <div class="folders-column">
+      <h4>Carpetas</h4>
+      <ul>
+        <li *ngFor="let folder of folderStructure" (click)="mostrarArchivosDeCarpeta(folder)">
+          {{ folder }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="files-column">
+      <h4>Archivos en la Carpeta: {{ carpetaSeleccionada }}</h4>
+      <ul>
+        <li *ngFor="let file of archivosDeCarpeta">
+          {{ file.name }}
+          <button (click)="verContenido(file)">Ver Contenido</button>
+        </li>
+      </ul>
+
+      <div *ngIf="archivoSeleccionado"> <!-- Solo mostrar si hay un archivo seleccionado -->
+        <h4>Contenido del Archivo</h4>
+        <div *ngIf="archivoContenido || urlContenido">
+          <pre *ngIf="archivoContenido">{{ archivoContenido }}</pre>
+          <iframe *ngIf="urlContenido" [src]="urlContenido" width="100%" height="300px"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

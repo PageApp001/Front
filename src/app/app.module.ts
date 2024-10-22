@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule, isDevMode, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,11 +47,12 @@ import { EventListComponent } from './components/event-dashboard/event-list/even
 import { BirthdayImagesComponent } from './components/birthday-images/birthday-images.component';
 import { NotificationService } from './services/notification.service';
 import { InformationComponent } from './components/information/information.component';
-import { MisionComponent } from './components/mision/mision.component';
-import { VisionComponent } from './components/vision/vision.component';
-import { ValoresComponent } from './components/valores/valores.component';
-import { MapaComponent } from './components/mapa/mapa.component';
-import { PoliticasComponent } from './components/politicas/politicas.component';
+import { ArchivosComponent } from './components/archivos/archivos.component';
+// import { InformationEditComponent } from './components/information/information-edit/information-edit.component';
+// import { InformationFormComponent } from './components/information/information-form/information-form.component';
+import { InformationLisComponent } from './components/information/information-list/information-lis.component';
+import { InformationFormComponent } from './components/information/information-form/information-form.component';
+// import { InformationDetailsComponent } from './components/information/information-details/information-details.component';
 
 
 @NgModule({
@@ -80,13 +81,11 @@ import { PoliticasComponent } from './components/politicas/politicas.component';
     EventListComponent,
     BirthdayImagesComponent,
     InformationComponent,
-    MisionComponent,
-    VisionComponent,
-    ValoresComponent,
-    MapaComponent,
-    PoliticasComponent,
-
+    ArchivosComponent,
+    InformationLisComponent,
+    InformationFormComponent,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     BrowserModule,
     AppRoutingModule,
