@@ -1,34 +1,56 @@
-<div class="file-upload-container">
-  <h3>Sube tus Archivos</h3>
-  <input type="file" (change)="onFilesSelected($event)" webkitdirectory multiple />
-  <button class="upload" (click)="uploadFiles()">Subir Archivos</button>
+<!-- <div class="file-upload">
+  <h2>Subir Carpeta</h2>
 
-  <div class="content-container">
-    <div class="folders-column">
-      <h4>Carpetas</h4>
-      <ul>
-        <li *ngFor="let folder of folderStructure" (click)="mostrarArchivosDeCarpeta(folder)">
-          {{ folder }}
-        </li>
-      </ul>
-    </div>
-
-    <div class="files-column">
-      <h4>Archivos en la Carpeta: {{ carpetaSeleccionada }}</h4>
-      <ul>
-        <li *ngFor="let file of archivosDeCarpeta">
-          {{ file.name }}
-          <button (click)="verContenido(file)">Ver Contenido</button>
-        </li>
-      </ul>
-
-      <div *ngIf="archivoSeleccionado"> <!-- Solo mostrar si hay un archivo seleccionado -->
-        <h4>Contenido del Archivo</h4>
-        <div *ngIf="archivoContenido || urlContenido">
-          <pre *ngIf="archivoContenido">{{ archivoContenido }}</pre>
-          <iframe *ngIf="urlContenido" [src]="urlContenido" width="100%" height="300px"></iframe>
-        </div>
-      </div>
-    </div>
+  <div class="actions">
+    <button (click)="selectFolder()">Seleccionar Carpeta</button>
+    <button (click)="uploadFolder()" [disabled]="!folderStructure || folderStructure.length === 0">
+      Subir
+    </button>
   </div>
+
+  <h3>Estructura de Carpeta</h3>
+  <ul class="folder-list">
+    <ng-container *ngFor="let folder of folderStructure">
+      <li>
+        <div class="folder" (click)="toggleFolder(folder)">
+          <span [class.open]="folder.isOpen">📂</span> {{ folder.name }}
+        </div>
+
+        <ul *ngIf="folder.isOpen" class="sub-folder-list">
+          <ng-container *ngFor="let subItem of folder.contents">
+            <li *ngIf="subItem.isFolder">
+              <div class="folder" (click)="toggleFolder(subItem)">
+                <span [class.open]="subItem.isOpen">📂</span> {{ subItem.name }}
+              </div>
+              <ul *ngIf="subItem.isOpen" class="sub-folder-list">
+                <ng-container *ngFor="let file of subItem.contents">
+                  <li *ngIf="!file.isFolder" (click)="displayFileContent(file)" class="file">
+                    📄 {{ file.name }}
+                  </li>
+                </ng-container>
+              </ul>
+            </li>
+            <li *ngIf="!subItem.isFolder" (click)="displayFileContent(subItem)" class="file">
+              📄 {{ subItem.name }}
+            </li>
+          </ng-container>
+        </ul>
+      </li>
+    </ng-container>
+  </ul>
+
+  <div *ngIf="fileContent" class="file-content">
+    <h4>Contenido del Archivo</h4>
+    <pre>{{ fileContent }}</pre>
+  </div>
+</div> -->
+
+<div class="file-upload">
+  <h2>Gestión de Archivos y Carpetas</h2>
+  <app-archivos-from (folderSelected)="onFolderSelected($event)"></app-archivos-from>
+  <app-archivos-list [folderStructure]="folderStructure" (fileSelected)="onFileSelected($event)"></app-archivos-list>
+  <app-archivos-details [fileContent]="fileContent"></app-archivos-details>
 </div>
+
+
+

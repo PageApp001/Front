@@ -52,6 +52,9 @@ import { ArchivosComponent } from './components/archivos/archivos.component';
 // import { InformationFormComponent } from './components/information/information-form/information-form.component';
 import { InformationLisComponent } from './components/information/information-list/information-lis.component';
 import { InformationFormComponent } from './components/information/information-form/information-form.component';
+import { ArchivosFromComponent } from './components/archivos/archivos-from/archivos-from.component';
+import { ArchivosListComponent } from './components/archivos/archivos-list/archivos-list.component';
+import { ArchivosEditComponent } from './components/archivos/archivos-edit/archivos-edit.component';
 // import { InformationDetailsComponent } from './components/information/information-details/information-details.component';
 
 
@@ -84,6 +87,9 @@ import { InformationFormComponent } from './components/information/information-f
     ArchivosComponent,
     InformationLisComponent,
     InformationFormComponent,
+    ArchivosFromComponent,
+    ArchivosListComponent,
+    ArchivosEditComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

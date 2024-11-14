@@ -1,0 +1,32 @@
+<h3>Estructura de Carpeta</h3>
+<ul class="folder-list">
+  <ng-container *ngFor="let folder of folderStructure">
+    <li>
+      <!-- Carpeta principal -->
+      <div class="folder" (click)="toggleFolder(folder)">
+        <span [class.open]="folder.isOpen">📂</span> {{ folder.name }}
+      </div>
+      <ul *ngIf="folder.isOpen" class="sub-folder-list">
+        <ng-container *ngFor="let subItem of folder.contents">
+          <li *ngIf="subItem.isFolder">
+            <!-- Subcarpeta -->
+            <div class="folder" (click)="toggleFolder(subItem)">
+              <span [class.open]="subItem.isOpen">📂</span> {{ subItem.name }}
+            </div>
+            <ul *ngIf="subItem.isOpen" class="sub-folder-list">
+              <ng-container *ngFor="let file of subItem.contents">
+                <li *ngIf="!file.isFolder" (click)="selectFile(file)" class="file">
+                  📄 {{ file.name }}
+                </li>
+              </ng-container>
+            </ul>
+          </li>
+          <!-- Archivo en la carpeta principal -->
+          <li *ngIf="!subItem.isFolder" (click)="selectFile(subItem)" class="file">
+            📄 {{ subItem.name }}
+          </li>
+        </ng-container>
+      </ul>
+    </li>
+  </ng-container>
+</ul>

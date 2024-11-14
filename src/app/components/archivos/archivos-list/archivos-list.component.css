@@ -1,0 +1,43 @@
+.folder-list,
+.sub-folder-list {
+  list-style-type: none;
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.folder,
+.file {
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.folder {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.folder:hover {
+  background-color: #e6f7ff;
+}
+
+.file {
+  color: #333;
+  padding-left: 20px;
+}
+
+.file:hover {
+  background-color: #f4f4f4;
+}
+
+span.open {
+  transform: rotate(90deg);
+}
+
+.sub-folder-list {
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+}
